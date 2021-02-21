@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,---------------------------.
  * | RESET|      |      |      |
  * |------+------+------+------|
- * |      |      |      |      |11111
+ * |      |      |      |      |
  * |------+------+------+------|
  * |      |      |      |      |
  * |------+------+------+------|
@@ -98,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_FN] = LAYOUT_ortho_4x4(
     RESET,     KC_TRNS,   KC_TRNS,    KC_TRNS,
     KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,
-    HYPR(KC_A),   KC_TRNS,   KC_TRNS,    KC_TRNS,
+    KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,
     KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS
 )
 };
