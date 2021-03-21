@@ -18,25 +18,12 @@
 /*#####################################
 ############## TAP DANCE ##############
 #####################################*/
-// Caps lock
-// Tap Dance declarations
-enum {
-  TD_PLS_PMNS,
-  TD_PAST_PSLS,
-  TD_ENTER_PEQL,
-};
-
-// Tap Dance definitions
-// qk_tap_dance_action_t tap_dance_actions[] = {
-//     // Tap once for first key, twice for second key
-//     [TD_PLS_PMNS] = ACTION_TAP_DANCE_DOUBLE(KC_PPLS, KC_PMNS),
-//     [TD_PAST_PSLS] = ACTION_TAP_DANCE_DOUBLE(KC_PAST, KC_PSLS),
-//     [TD_ENTER_PEQL] = ACTION_TAP_DANCE_DOUBLE(KC_ENTER, KC_PEQL),
-
-// };
 
 // Tap Dance keycodes
 enum td_keycodes {
+    TD_PAST_PSLS,
+    TD_ENTER_PEQL,
+    TD_PPLS_PMNS,
     TD_MUTE_FN // Our example key: `LALT` when held, `(` when tapped. Add additional keycodes for each tapdance.
 };
 
@@ -80,9 +67,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BASE] = LAYOUT_ortho_4x4(
     KC_P7,      KC_P8,   KC_P9,    KC_BSPC,
     KC_P4,      KC_P5,   KC_P6,    TD(TD_PAST_PSLS),
-    KC_P1,      KC_P2,   KC_P3,    TD(TD_PLS_PMNS),
+    KC_P1,      KC_P2,   KC_P3,    TD(TD_PPLS_PMNS),
     TD(TD_MUTE_FN), KC_P0,   KC_PDOT,  TD(TD_ENTER_PEQL)
 ),
+
 
 /* FN
  * ,---------------------------.
@@ -154,9 +142,9 @@ void mutefn_reset(qk_tap_dance_state_t *state, void *user_data) {
 
 // Define `ACTION_TAP_DANCE_FN_ADVANCED()` for each tapdance keycode, passing in `finished` and `reset` functions
 qk_tap_dance_action_t tap_dance_actions[] = {
-  [TD_PLS_PMNS] = ACTION_TAP_DANCE_DOUBLE(KC_PPLS, KC_PMNS),
   [TD_PAST_PSLS] = ACTION_TAP_DANCE_DOUBLE(KC_PAST, KC_PSLS),
   [TD_ENTER_PEQL] = ACTION_TAP_DANCE_DOUBLE(KC_ENTER, KC_PEQL),
+  [TD_PPLS_PMNS] = ACTION_TAP_DANCE_DOUBLE(KC_PPLS, KC_PMNS),
   [TD_MUTE_FN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mutefn_finished, mutefn_reset)
 };
 
